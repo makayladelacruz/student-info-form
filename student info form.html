@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style type='text/css'>
+html, body { height: 100%; }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+<!-- Jquery -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+
+<!-- local -->
+<script type='text/javascript' src='https://cirrus.rider.edu/cis/ataylor/utilities-bs4.js'></script>
+
+<script type='text/javascript'>
+    
+    function doSubmit() {
+        var name= document.getElementById('name').value;
+        var age= document.querySelector('#age').value;
+        var location = document.querySelector("input[type=radio][name=location]:checked").value;
+        var college = $('#college').val();
+        
+     
+        //or college = document.querySelectorAll("#college option:checked");
+        if(name==''|| age==''||!location||college.length==0){
+            message('You have not completed the form yet.');
+        }
+        else{
+        message('Welcome '+ name + ' you are ' + age + ' you live ' + location + ' and you are in ' + college);
+        
+      
+        var buff = "<ul>";
+            for (var x of college) {
+             buff += "<li>" + x + "</li>" ;
+             //alert(option.text); if use queryselectorall
+            }
+        buff += "</ul>";
+        document.getElementById('message-div').innerHTML = buff;
+        document.getElementById('message-div').setAttribute("style","display:block");
+}
+    }
+    
+    
+</script>
+
+</head>
+
+<body>
+    
+  <div class="row w-35 h-100 align-items-center ">
+
+          <div  class='container h-55'>
+
+                <!-- start card -->
+                 <div class='card m-2'>
+
+                   <div class='card-body border'>
+
+                       <h5 class='card-header'>Student Information</h5>
+
+                       <!-- ** card content goes here ** -->
+                       
+                       <div class='form-group'>
+                       <label for='name' class='label'>Student Name </label>
+                       <input type='text' class='form-control' id='name' placeholder='Student Name' />
+                      </div>
+                      
+                      <!-- Age Select List -->
+                      <div class='form-group'>
+                        <label for='age' class='label text-primary m-2'>Age: </label>
+                       <select class="form-control" id='age'>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                        </select>
+                      </div>
+                      
+                      
+                      <!-- location radio buttons -->
+                     <div class='form-group'>
+                          <label for='year' class='label text-primary m-2'>Location:  </label>
+                            <div class="form-check-inline">
+                                 <label class="form-check-label">
+                                     <input type="radio" class="form-check-input" name="location" value="On-Campus">On-Campus
+                               </label>
+                            </div>
+                            
+                              <div class="form-check-inline">
+                                 <label class="form-check-label">
+                                     <input type="radio" class="form-check-input" name="location" value="Off-Campus">Off-Campus
+                               </label>
+                            </div>
+                
+                      </div>
+                      
+                      <!-- College Select List -->
+                      <div class='form-group'>
+                        <label for='college' class='label text-primary m-2'>College: </label>
+                       <select class="form-control" id='college' multiple>
+                            <option>LASCAP</option>
+                            <option>NBCB</option>
+                            <option>CEHS</option>
+                            <option>WCC</option>
+                            <option>FUN</option>
+                        </select>
+                      </div>
+                      
+
+                     
+                    <!-- Button -->
+                       <button type='button' class='btn btn-primary m-1' onclick='doSubmit()' >Submit</button>
+
+                   </div> <!-- end card body -->
+
+            </div>  <!-- end card -->
+            
+            <!-- start card -->
+   <div class='card m-2'>
+      <h5 class='card-header'>Colleges Chosen</h5>
+      <div id='message-div' class='card-body border' style='display:none'>
+          
+      <h1 id='message-header' class='card-header'></h1>
+      
+    </div>
+ </div>  <!-- end card -->
+
+
+         </div>
+         
+    </div>
+
+</body>
+</html>
+
+
+
+
+
